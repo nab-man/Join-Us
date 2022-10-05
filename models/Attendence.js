@@ -1,30 +1,21 @@
 const { Model, DataTypes } = require("sequelize")
 const sequelize = require("../config/connection.js")
 
-class User extends Model { }
+class Attendence extends Model { }
 
-User.init({
-    user_id: {
+Attendence.init({
+    attendence_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
     },
-    user_name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-
 }, {
     sequelize,
     timestamps: false,
-    underscored: true,
     freezeTableName: true,
-    modelName: "user"
+    underscored: true,
+    modelName: 'attendence'
 })
 
-module.exports = User
+module.exports = Attendence

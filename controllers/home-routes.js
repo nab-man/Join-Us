@@ -33,6 +33,19 @@ router.get("/dashboard", async (req, res) => {
 
 })
 
+router.get("/post/:id", async (req, res) => {
+  try {
+    const postData = await Post.findOne({ where: { post_id: req.params.id }, include: { model: Comment } })
+
+    const post = postData.get({ raw: true })
+    console.log(post)
+    res.render('partials/post-info', post)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+})
+
 router.get("/login", (req, res) => {
   console.log(req.session);
   if (req.session.loggedIn) {

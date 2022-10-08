@@ -35,7 +35,7 @@ router.get("/dashboard", async (req, res) => {
 
 router.get("/post/:id", async (req, res) => {
   try {
-    const postData = await Post.findOne({ where: { post_id: req.params.id }, include: { model: Comment } })
+    const postData = await Post.findOne({ where: { post_id: req.params.id }, include: [{ model: Comment }, { model: User, as: "user" }] })
 
     const post = postData.get({ raw: true })
     console.log(post)

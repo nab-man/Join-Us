@@ -19,7 +19,7 @@ Post.init({
         allowNull: false
     },
     date_created: {
-        type: DataTypes.TIME,
+        type: DataTypes.DATE,
         allowNull: false
     },
     creator: {
@@ -34,7 +34,7 @@ Post.init({
         allowNull: false
     },
     meetup_date: {
-        type: DataTypes.TIME,
+        type: DataTypes.DATE,
         allowNull: false,
     }
 }, {

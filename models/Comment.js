@@ -29,7 +29,7 @@ Comment.init({
         }
     },
     date_created: {
-        type: DataTypes.TIME,
+        type: DataTypes.DATE,
         allowNull: false
     }
 }, {

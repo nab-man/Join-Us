@@ -1,1 +1,11 @@
-<h1>this is post info handlebar</h1>
+{{title}}
+<br>
+{{contents}}
+<br>
+{{date_created}}
+<br>
+{{creator}}
+
+{{#each comments}}
+    {{>comments}}
+{{/each}}

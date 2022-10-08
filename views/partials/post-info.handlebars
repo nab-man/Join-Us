@@ -4,8 +4,9 @@
 <br>
 {{date_created}}
 <br>
-{{creator}}
-
+{{user.dataValues.user_name}}
+<br>
+{{!-- {{comments.dataValues}} --}}
 {{#each comments}}
     {{>comments}}
 {{/each}}

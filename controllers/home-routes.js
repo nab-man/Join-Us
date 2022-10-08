@@ -9,15 +9,20 @@ router.get("/", (req, res) => {
 router.get("/dashboard", async (req, res) => {
   try {
     const postsData = await Post.findAll({
+      logging: console.log,
       include: [
-        { model: Comment },
-        { model: User }
-      ]
+        { model: Comment, include: [{ model: User, as: "user" }, { model: Post, as: "post" }] },
+        {
+          model: User, as: "user"
+        }
+      ],
     })
+    console.log(postsData[0].dataValues.comments)
     const posts = postsData.map((post) =>
-      post.get({ plain: true })
+      post.get({ raw: true })
     );
-    console.log(posts)
+    console.log(posts[0].comments)
+
     res.render('dashboard', {
       posts
     })

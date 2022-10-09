@@ -10,6 +10,20 @@ Attendence.init({
         primaryKey: true,
         autoIncrement: true
     },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'user_id'
+        }
+      },
+      post_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'post',
+          key: 'post_id'
+        }
+      }
 }, {
     sequelize,
     timestamps: false,

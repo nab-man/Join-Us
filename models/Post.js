@@ -15,12 +15,13 @@ Post.init({
         allowNull: false
     },
     contents: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     date_created: {
-        type: DataTypes.TIME,
-        allowNull: false
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        defaultValue: DataTypes.NOW
     },
     creator: {
         type: DataTypes.INTEGER,
@@ -34,12 +35,14 @@ Post.init({
         allowNull: false
     },
     meetup_date: {
-        type: DataTypes.TIME,
+        type: DataTypes.DATE,
         allowNull: false,
     }
 }, {
     sequelize,
-    timestamps: false,
+    timestamps: true,
+    createdAt: false,
+    updatedAt: false,
     underscored: true,
     freezeTableName: true,
     modelName: "post"

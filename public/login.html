@@ -24,11 +24,11 @@
             var email = document.querySelector(".email").value
             var password = document.querySelector(".password").value
             var data = {
-                email: email,
+                user_name: email,
                 password: password
             }
             console.log(email)
-            fetch("http://localhost:3000/auth/login", {
+            fetch("http://localhost:3000/api/users/login", {
                 credentials: "include",
                 method: "POST",
                 headers: {
@@ -49,7 +49,7 @@
             var email = document.querySelector(".email-register").value
             var password = document.querySelector(".password-register").value
             var data = {
-                email: email,
+                user_name: email,
                 password: password
             }
             console.log(email)

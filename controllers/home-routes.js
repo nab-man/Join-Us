@@ -17,6 +17,7 @@ router.get("/dashboard", async (req, res) => {
         }
       ],
     })
+    console.log(postsData)
     console.log(postsData[0].dataValues.comments)
     const posts = postsData.map((post) =>
       post.get({ raw: true })
@@ -50,11 +51,26 @@ router.get("/post/:id", async (req, res) => {
   }
 })
 
-router.get("/login", (req, res) => {
-  console.log(req.session);
+router.get("/login", async (req, res) => {
+  console.log(req.session.loggedIn);
+  const postsData = await Post.findAll({
+    logging: console.log,
+    include: [
+      { model: Comment, include: [{ model: User, as: "user" }, { model: Post, as: "post" }] },
+      {
+        model: User, as: "user"
+      }
+    ],
+  })
+  console.log(postsData)
+  console.log(postsData[0].dataValues.comments)
+  const posts = postsData.map((post) =>
+    post.get({ raw: true })
+  );
+
   if (req.session.loggedIn) {
     console.log("logged in")
-    res.render('dashboard');
+    res.render('dashboard', { posts });
     return;
   }
 

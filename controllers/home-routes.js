@@ -41,9 +41,13 @@ router.get("/post/:id", async (req, res) => {
       include: [{ model: Comment, include: [{ model: User, as: "user" }] }, { model: User, as: "user" }]
     })
     console.log(postData)
+    if (!postData) {
+      res.render('404error');
+    }else{
     const post = postData.get({ raw: true })
-    console.log(post)
+    console.log(post);
     res.render('partials/post-info', post)
+    }
   } catch (err) {
     console.log(err)
     res.status(500).json(err)

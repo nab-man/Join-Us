@@ -15,12 +15,13 @@ Post.init({
         allowNull: false
     },
     contents: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     date_created: {
-        type: DataTypes.DATE,
-        allowNull: false
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        defaultValue: DataTypes.NOW
     },
     creator: {
         type: DataTypes.INTEGER,
@@ -39,7 +40,9 @@ Post.init({
     }
 }, {
     sequelize,
-    timestamps: false,
+    timestamps: true,
+    createdAt: false,
+    updatedAt: false,
     underscored: true,
     freezeTableName: true,
     modelName: "post"

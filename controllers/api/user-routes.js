@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Comment, Post } = require('../../models');
+const bcrypt = require("bcrypt")
 
 //Route to get all users
 router.get('/', (req, res) => {
@@ -52,9 +53,9 @@ router.get('/:id', (req, res) => {
 //The users route in auth directory also has create user, login and logout routes
 //Route to create users
 router.post('/', (req, res) => {
+  console.log(req.body)
   User.create({
     user_name: req.body.user_name,
-    email: req.body.email,
     password: req.body.password
   })
     .then(dbUserData => {
@@ -75,6 +76,7 @@ router.post('/', (req, res) => {
 //Route to login
 router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
+  // console.log(req.session)
   User.findOne({
     where: {
       user_name: req.body.user_name

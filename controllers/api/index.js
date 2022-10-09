@@ -5,6 +5,8 @@ const postRoutes = require('../home-routes');
 const commentRoutes = require('./comment-routes');
 const attendanceRoutes = require('./attendance-routes');
 
+//route until here  /api/
+
 router.use('/users', userRoutes);
 router.use('/posts', postRoutes);
 router.use('/comments', commentRoutes);

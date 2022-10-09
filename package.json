@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "seeds": "node seeds/index.js",
-    "start": "node server.js"
+    "start": "nodemon --delay 3 server.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +22,7 @@
     "sequelize": "^5.22.5"
   },
   "devDependencies": {
+   "nodemon": "^2.0.20"
     "jest": "^29.1.2"
   },
   "repository": {
@@ -32,4 +33,7 @@
     "url": "https://github.com/nab-man/Join-Us/issues"
   },
   "homepage": "https://github.com/nab-man/Join-Us#readme"
+  
+  }
+
 }

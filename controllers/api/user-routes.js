@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      id: req.params.user_id
+      user_id:req.params.id
     },
     include: [
       {
@@ -119,7 +119,7 @@ router.put('/:id', (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
-      id: req.params.user_id
+      user_id:req.params.id
     }
   })
     .then(dbUserData => {
@@ -139,7 +139,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
-      id: req.params.user_id
+      user_id:req.params.id
     }
   })
     .then(dbUserData => {

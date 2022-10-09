@@ -7,8 +7,9 @@ const sequelize = require("./config/connection");
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const path = require('path');
+const cors = require('cors')
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 const sess = {
   secret: "Super secret secret",
@@ -20,6 +21,12 @@ const sess = {
   }),
 };
 
+const corsOptions = {
+  origin: "http://localhost:3000/",
+  credentials: true
+}
+
+app.use(cors(corsOptions))
 app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);

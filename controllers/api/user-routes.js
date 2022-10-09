@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      user_id:req.params.id
+      user_id: req.params.id
     },
     include: [
       {
@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
         req.session.user_id = dbUserData.user_id;
         req.session.user_name = dbUserData.user_name;
         req.session.loggedIn = true;
-  
+
         res.json(dbUserData);
       });
     })
@@ -84,21 +84,25 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: "Sorry, we don't recognize this user name" });
       return;
     }
+    const hashedPass = dbUserData.dataValues.password;
+    bcrypt.compare(req.body.password, hashedPass, function (err, result) {
+      if (err) {
+        res
+          .status(400)
+          .json({ message: "Incorrect email or password. Please try again!" });
+        return;
+      }
 
-    const validPassword = dbUserData.checkPassword(req.body.password);
+      req.session.save(() => {
+        req.session.loggedIn = true;
 
-    if (!validPassword) {
-      res.status(400).json({ message: 'The password is incorrect' });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = dbUserData.user_id;
-      req.session.user_name = dbUserData.user_name;
-      req.session.loggedIn = true;
-  
-      res.json({ user: dbUserData, message: 'Logged in successfully!' });
+        res
+          .status(200)
+          .json({ user: dbUserData, message: "You are now logged in!" });
+      });
     });
+
+
   });
 });
 
@@ -119,7 +123,7 @@ router.put('/:id', (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
-      user_id:req.params.id
+      user_id: req.params.id
     }
   })
     .then(dbUserData => {
@@ -139,7 +143,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
-      user_id:req.params.id
+      user_id: req.params.id
     }
   })
     .then(dbUserData => {

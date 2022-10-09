@@ -48,6 +48,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
+
+//The users route in auth directory also has create user, login and logout routes
 //Route to create users
 router.post('/', (req, res) => {
   User.create({

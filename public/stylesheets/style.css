@@ -6,3 +6,13 @@
   margin: 100px;
   padding: 100px;
 }
+
+.px-5 {
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.px-5 a{
+  margin:10px;
+  flex-basis:30%;
+}

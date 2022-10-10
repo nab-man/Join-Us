@@ -1,8 +1,39 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require("../models/index.js")
 
-router.get("/", (req, res) => {
-  res.render('homepage')
+router.get("/", async (req, res) => {
+  try {
+    const postsData = await Post.findAll({
+      logging: console.log,
+      include: [
+        { model: Comment, include: [{ model: User, as: "user" }, { model: Post, as: "post" }] },
+        {
+          model: User, as: "user"
+        }
+      ],
+    })
+    const posts = postsData.map((post) =>
+      post.get({ raw: true })
+    );
+    let loggedIn;
+    if (req.session.loggedIn) {
+      console.log(req.session)
+      loggedIn = true;
+
+    }
+    if (loggedIn) {
+
+      res.render('dashboard', {
+        posts, loggedIn
+      })
+    } else {
+      res.render('login')
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err)
+  }
+
 })
 
 //get all posts for dashboard
@@ -17,16 +48,23 @@ router.get("/dashboard", async (req, res) => {
         }
       ],
     })
-    console.log(postsData)
-    console.log(postsData[0].dataValues.comments)
     const posts = postsData.map((post) =>
       post.get({ raw: true })
     );
-    console.log(posts[0].comments)
+    let loggedIn;
+    if (req.session.loggedIn) {
+      console.log(req.session)
+      loggedIn = true;
 
-    res.render('dashboard', {
-      posts
-    })
+    }
+    if (loggedIn) {
+
+      res.render('dashboard', {
+        posts, loggedIn
+      })
+    } else {
+      res.render('login')
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err)
@@ -44,10 +82,14 @@ router.get("/post/:id", async (req, res) => {
     console.log(postData)
     if (!postData) {
       res.render('404error');
-    }else{
-    const post = postData.get({ raw: true })
-    console.log(post);
-    res.render('partials/post-info', post)
+    } else {
+      let loggedIn;
+      if (req.session.loggedIn) {
+        loggedIn = true
+      }
+      const post = postData.get({ raw: true })
+      console.log(post);
+      res.render('partials/post-info', { post, loggedIn })
     }
   } catch (err) {
     console.log(err)

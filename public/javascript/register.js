@@ -1,8 +1,8 @@
-var login = document.getElementById('loginform');
-login.addEventListener('submit', submitLogin);
+var register = document.getElementById('registerform');
+register.addEventListener('submit', submitRegister);
 
-function submitLogin(event) {
-    event.preventDefault()
+function submitRegister(event) {
+
     console.log("hello event form")
     var email = document.getElementById("email").value
     var password = document.getElementById("password").value
@@ -10,7 +10,7 @@ function submitLogin(event) {
         user_name: email,
         password: password
     }
-    fetch("http://localhost:3000/api/users/login", {
+    fetch("http://localhost:3000/api/users", {
         credentials: "include",
         method: "POST",
         headers: {
@@ -18,7 +18,5 @@ function submitLogin(event) {
             "Accept": "application/json"
         },
         body: JSON.stringify(data)
-    }).then(() => {
-        window.location.href = "/dashboard"
     })
 }

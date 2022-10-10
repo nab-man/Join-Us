@@ -1,8 +1,9 @@
 const router = require('express').Router();
+const moment = require('moment');
 const { Post, Comment, User } = require("../models/index.js")
 
 router.get("/", (req, res) => {
-  res.render('homepage')
+  res.redirect('/dashboard')
 })
 
 //get all posts for dashboard
@@ -17,11 +18,21 @@ router.get("/dashboard", async (req, res) => {
         }
       ],
     })
-    console.log(postsData)
-    console.log(postsData[0].dataValues.comments)
-    const posts = postsData.map((post) =>
+    // console.log(postsData)
+    // console.log(postsData[0].dataValues.comments)
+    let posts = postsData.map((post) =>
       post.get({ raw: true })
     );
+    console.log("this is the date created ", posts[0].date_created);
+    posts = posts.map((post) =>{
+    console.log(post.date_created);
+    let a = moment(post.date_created);
+    let b = moment();
+    post["dayselapsed"] = Math.abs(a.diff(b, 'days'));
+    return post;
+    }
+    );
+    console.log(posts);
     console.log(posts[0].comments)
 
     res.render('dashboard', {

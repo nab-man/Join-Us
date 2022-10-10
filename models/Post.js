@@ -35,7 +35,7 @@ Post.init({
         allowNull: false
     },
     meetup_date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
     }
 }, {

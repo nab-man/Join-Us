@@ -23,7 +23,7 @@ router.get("/dashboard", async (req, res) => {
       ],
     })
 
-    const posts = postsData.map((post) =>
+    let posts = postsData.map((post) =>
       post.get({ raw: true })
     );
     posts = posts.map((post) =>{

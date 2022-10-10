@@ -1,6 +1,6 @@
 
 
-<div class="bg-white rounded-lg border shadow-md dark:bg-gray-800 dark:border-gray-700 post-outline" >
+{{!-- <div class="bg-white rounded-lg border shadow-md dark:bg-gray-800 dark:border-gray-700 post-outline" >
                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{post.title}}</h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">{{post.contents}}</p>
                 <p class="font-normal text-gray-700 dark:text-gray-400">{{post.date_created}}</p>
@@ -14,7 +14,7 @@
                 {{/each}}
 
 
-                
+                 --}}
 
 
 
@@ -27,15 +27,15 @@
                   <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                       <img class="mr-4 w-16 h-16 rounded-full" src="/images/test-avatar.png" alt="User avatar">
                       <div>
-                          <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-gray-200">{{user.dataValues.user_name}}</a>
+                          <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-gray-200">{{post.user.dataValues.user_name}}</a>
                           <p class="text-base font-light text-gray-500 dark:text-gray-400"></p>
-                          <p class="text-base font-md text-gray-500 dark:text-gray-300"><time pubdate datetime="{{date_created}}" title="{{date_created}}">{{date_created}}</time></p>
+                          <p class="text-base font-md text-gray-500 dark:text-gray-300"><time pubdate datetime="{{date_created}}" title="{{date_created}}">{{post.date_created}}</time></p>
                       </div>
                   </div>
               </address>
-              <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-gray-200">{{title}}</h1>
+              <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-gray-200">{{post.title}}</h1>
           </header>
-          <p class="lead text-base font-md text-gray-500 dark:text-gray-300">{{contents}}</p>
+          <p class="lead text-base font-md text-gray-500 dark:text-gray-300">{{post.contents}}</p>
         </article>
     </div>
 
@@ -50,7 +50,7 @@
 {{/if}}
 
  
-{{#each comments}}
+{{#each post.comments}}
 <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
         <footer class="flex justify-between items-center mb-2">
             <div class="flex items-center">
@@ -92,7 +92,7 @@
                 </ul>
             </div>
         </footer>
-        <p class="text-gray-500 dark:text-gray-400">{{dataValues.content}}</p>
+        <p class="text-gray-500 dark:text-gray-400">{{post.dataValues.content}}</p>
         <div class="flex items-center mt-4 space-x-4">
             <button type="button"
                 class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400">
@@ -116,13 +116,13 @@
         
 <div class="p-6 max-w-sm bg-white rounded-lg  shadow-md dark:bg-gray-900 ">
     <a href="#">
-        <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-200">{{title}}</h5>
+        <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-200">{{post.title}}</h5>
     </a>
      <span class="mb-2 font-normal text-gray-700 dark:text-gray-400 text-m font-medium inline-flex items-center px-2.5 py-0.5 rounded ">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg text-gray5 fill-current mr-2" data-src="https://secure.meetupstatic.com/next/images/design-system-icons/time-outline.svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>icon</title>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5 12C20.5 16.6944 16.6944 20.5 12 20.5C7.30558 20.5 3.5 16.6944 3.5 12C3.5 7.30558 7.30558 3.5 12 3.5C16.6944 3.5 20.5 7.30558 20.5 12ZM22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM14.4697 15.5303C14.7626 15.8232 15.2374 15.8232 15.5303 15.5303C15.8232 15.2374 15.8232 14.7626 15.5303 14.4697L12.8232 11.7626C12.7763 11.7157 12.75 11.6521 12.75 11.5858L12.75 6C12.75 5.58579 12.4142 5.25 12 5.25C11.5858 5.25 11.25 5.58579 11.25 6L11.25 11.5858C11.25 12.0499 11.4344 12.495 11.7626 12.8232L14.4697 15.5303Z"></path>
                         </svg>
-    {{meetup_date}}
+    {{post.meetup_date}}
                   </span>
     
 
@@ -134,7 +134,7 @@
       <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
       <div class="p-6 max-w-sm bg-white rounded-lg  shadow-md dark:bg-gray-900 ">
 <span class=" mb-4 text-2xl font-md tracking-tight text-gray-900 dark:text-gray-200 ">
-       {{location}}
+       {{post.location}}
 </span>
        </div>
       </ul>

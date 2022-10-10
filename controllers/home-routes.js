@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 
 //get all posts for dashboard
 router.get("/dashboard", async (req, res) => {
-  try { 
+  try {
     const postsData = await Post.findAll({
       logging: console.log,
       include: [
@@ -26,12 +26,12 @@ router.get("/dashboard", async (req, res) => {
     let posts = postsData.map((post) =>
       post.get({ raw: true })
     );
-    posts = posts.map((post) =>{
-    
-    let a = moment(post.date_created);
-    let b = moment();
-    post["dayselapsed"] = Math.abs(a.diff(b, 'days'));
-    return post;
+    posts = posts.map((post) => {
+
+      let a = moment(post.date_created);
+      let b = moment();
+      post["dayselapsed"] = Math.abs(a.diff(b, 'days'));
+      return post;
     }
     );
     let loggedIn;
@@ -40,14 +40,11 @@ router.get("/dashboard", async (req, res) => {
       loggedIn = true;
 
     }
-    if (loggedIn) {
 
-      res.render('dashboard', {
-        posts, loggedIn
-      })
-    } else {
-      res.render('login')
-    }
+    res.render('dashboard', {
+      posts, loggedIn
+    })
+
 
 
   } catch (err) {
@@ -58,13 +55,13 @@ router.get("/dashboard", async (req, res) => {
 })
 
 router.get("/post/:id", async (req, res) => {
- 
+
   try {
     const postData = await Post.findOne({
       where: { post_id: req.params.id },
       include: [{ model: Comment, include: [{ model: User, as: "user" }] }, { model: User, as: "user" }]
     })
-   
+
     if (!postData) {
       res.render('404error');
 

@@ -13,11 +13,11 @@ router.get('/', (req, res) => {
 });
 
 //POST new comment
-router.post('/', isAuthorized, (req, res) => {
+router.post('/', async (req, res) => {
   Comment.create({
     comment_text: req.body.content,
     user_id: req.session.creator_id,
-    post_id: req.body.comment_id
+    post_id: req.body.post_id
   })
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {

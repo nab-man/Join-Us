@@ -1,8 +1,8 @@
-.testvh{
-    height: 100vh;
+.testvh {
+  min-height: 100vh;
 }
 
-.post-outline{
-    margin:100px;
-    padding:100px;
+.post-outline {
+  margin: 100px;
+  padding: 100px;
 }

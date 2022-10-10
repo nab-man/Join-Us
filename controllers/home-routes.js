@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 
 //get all posts for dashboard
 router.get("/dashboard", async (req, res) => {
-  try {
+  try { 
     const postsData = await Post.findAll({
       logging: console.log,
       include: [
@@ -23,18 +23,20 @@ router.get("/dashboard", async (req, res) => {
     let posts = postsData.map((post) =>
       post.get({ raw: true })
     );
-    console.log("this is the date created ", posts[0].date_created);
+    // console.log("this is the posts data ", posts[0]);
     posts = posts.map((post) =>{
-    console.log(post.date_created);
+    
     let a = moment(post.date_created);
     let b = moment();
     post["dayselapsed"] = Math.abs(a.diff(b, 'days'));
     return post;
     }
     );
-    console.log(posts);
-    console.log(posts[0].comments)
+    // console.log("this is the updated posts data ",posts);
+    // console.log(posts[0].comments);
 
+    
+    
     res.render('dashboard', {
       posts
     })
@@ -46,19 +48,20 @@ router.get("/dashboard", async (req, res) => {
 })
 
 router.get("/post/:id", async (req, res) => {
-  console.log("here")
+ 
   try {
     const postData = await Post.findOne({
       where: { post_id: req.params.id },
       include: [{ model: Comment, include: [{ model: User, as: "user" }] }, { model: User, as: "user" }]
     })
-    console.log(postData)
+   
     if (!postData) {
       res.render('404error');
     }else{
     const post = postData.get({ raw: true })
-    console.log(post);
-    res.render('partials/post-info', post)
+    console.log("this is single post data ",post);
+    
+    res.render('partials/post-info', post);
     }
   } catch (err) {
     console.log(err)

@@ -2,10 +2,8 @@
   min-height: 100vh;
 }
 
-.post-outline {
-  margin: 100px;
-  padding: 100px;
-}
+
+
 
 .px-5 {
   display:flex;
@@ -15,4 +13,10 @@
 .px-5 a{
   margin:10px;
   flex-basis:30%;
+}
+
+
+.datepicker{
+     top:240px !important;
+
 }

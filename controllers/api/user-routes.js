@@ -96,11 +96,12 @@ router.post('/login', (req, res) => {
       }
 
       req.session.save(() => {
+        req.session.user_id = dbUserData.dataValues.user_id
         req.session.loggedIn = true;
+        let loggedIn = {}
+        loggedIn.loggedIn = true;
 
-        res
-          .status(200)
-          .json({ user: dbUserData, message: "You are now logged in!" });
+        res.render('dashboard', loggedIn)
       });
     });
 
@@ -110,8 +111,10 @@ router.post('/login', (req, res) => {
 
 //Route to log out
 router.post('/logout', (req, res) => {
+  console.log(req.session, "here")
   if (req.session.loggedIn) {
     req.session.destroy(() => {
+      console.log(req.session, "here")
       res.status(204).end();
     });
   }

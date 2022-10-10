@@ -1,5 +1,19 @@
 
 
+<div class="bg-white rounded-lg border shadow-md dark:bg-gray-800 dark:border-gray-700 post-outline" >
+               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{post.title}}</h5>
+                <p class="font-normal text-gray-700 dark:text-gray-400">{{post.contents}}</p>
+                <p class="font-normal text-gray-700 dark:text-gray-400">{{post.date_created}}</p>
+                <p class="font-normal text-gray-700 dark:text-gray-400">By: {{post.user.dataValues.user_name}}</p>
+                <br>
+                <br>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Comments</h5>
+                {{#each post.comments}}
+                    <p class="font-normal text-gray-700 dark:text-gray-400">{{dataValues.content}}</p> 
+                    <p class="font-normal text-gray-700 dark:text-gray-400">By: {{dataValues.user.dataValues.user_name}}</p> 
+                {{/each}}
+
+
                 
 
 
@@ -111,6 +125,7 @@
     {{meetup_date}}
                   </span>
     
+
     
 </div>
 

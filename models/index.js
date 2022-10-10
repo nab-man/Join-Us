@@ -2,7 +2,6 @@ const User = require("./User")
 const Post = require("./Post")
 const Comment = require("./Comment")
 const Attendence = require("./Attendence")
-
 // User belongs to many post and post belong to many user through attendence
 User.belongsToMany(Post, { through: Attendence })
 Post.belongsToMany(User, { through: Attendence })
@@ -36,6 +35,7 @@ Post.hasMany(Comment, {
     foreignKey: "post_id",
     onDelete: "CASCADE"
 })
+
 
 
 module.exports = {

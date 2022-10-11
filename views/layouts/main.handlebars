@@ -20,7 +20,7 @@
       document.documentElement.classList.add('dark'); } else {
       document.documentElement.classList.remove('dark') }
     </script>
-
+    
   </head>
 
   <body class="bg-gray-200 dark:bg-gray-600">
@@ -356,14 +356,18 @@
         </div>
       </div>
     </footer>
-
+    
+    
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
     <script src="/javascript/dark-mode.js"></script>
+    
     {{#if loggedIn}}
-      <script src="/javascript/logout.js"></script>
+      <script src='/javascript/logout.js'></script>
     {{/if}}
-    <script src="javascript/logout.js"></script>
-    <script src="javascript/comment.js"></script>
+        <script src='/javascript/comment.js'></script>
+
+    
+    
   </body>
 
 </html>

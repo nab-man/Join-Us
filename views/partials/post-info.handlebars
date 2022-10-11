@@ -45,7 +45,7 @@
         <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion ({{post.comments.length}})</h2>
     </div>           
 
-{{#if true}}  {{! change this to logged in from true after testing }}
+{{#if loggedIn}}  {{! change this to logged in from true after testing }}
 {{> comment-form}}
 {{/if}}
 
@@ -148,7 +148,7 @@
   </div>
  
 </aside>
-<script src='/javascript/comment.js'/>
+
     
      
     

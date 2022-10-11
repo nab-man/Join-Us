@@ -71,7 +71,7 @@ router.get("/post/:id", async (req, res) => {
         loggedIn = true
       }
       const post = postData.get({ raw: true })
-      console.log(post);
+      // console.log(post);
       res.render('partials/post-info', { post, loggedIn })
 
     }

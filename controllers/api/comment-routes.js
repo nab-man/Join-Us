@@ -14,12 +14,18 @@ router.get('/', (req, res) => {
 
 //POST new comment
 router.post('/', async (req, res) => {
+
+  console.log(req.session)
   Comment.create({
-    comment_text: req.body.content,
-    user_id: req.session.creator_id,
-    post_id: req.body.post_id
+    content: req.body.content,
+    creator_id: req.session.user_id,
+    post_id: req.body.post_id,
+    date_created: new Date()
   })
-    .then(dbCommentData => res.json(dbCommentData))
+    .then(dbCommentData => {
+      console.log(dbCommentData)
+      res.json(dbCommentData)
+    })
     .catch(err => {
       console.log(err);
       res.status(400).json(err);

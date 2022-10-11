@@ -11,7 +11,7 @@ router.post("/newpost", async function (req, res) {
         date_created: new Date(),
         creator: req.session.user_id,
         location: "tbd",
-        meetup_date: req.body.datepicker
+        meetup_date: new Date(req.body.datepicker)
     })
 
     res.json(post)

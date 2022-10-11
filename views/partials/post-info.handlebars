@@ -42,7 +42,7 @@
     <section class="bg-gray-200 dark:bg-gray-600 py-4 lg:py-8">
   <div class="max-w-2xl mx-auto px-4">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion ()</h2>
+        <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion ({{post.comments.length}})</h2>
     </div>           
 
 {{#if true}}  {{! change this to logged in from true after testing }}
@@ -92,7 +92,7 @@
                 </ul>
             </div>
         </footer>
-        <p class="text-gray-500 dark:text-gray-400">{{post.dataValues.content}}</p>
+        <p class="text-gray-500 dark:text-gray-400">{{dataValues.content}}</p>
         <div class="flex items-center mt-4 space-x-4">
             <button type="button"
                 class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400">
@@ -124,18 +124,25 @@
                         </svg>
     {{post.meetup_date}}
                   </span>
-    
-
-    
-</div>
-
-        
+</div>  
       </ul>
       <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
       <div class="p-6 max-w-sm bg-white rounded-lg  shadow-md dark:bg-gray-900 ">
 <span class=" mb-4 text-2xl font-md tracking-tight text-gray-900 dark:text-gray-200 ">
        {{post.location}}
 </span>
+       </div>
+      </ul>
+        </ul>
+      <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+      <div class="p-6 max-w-sm bg-white rounded-lg  shadow-md dark:bg-gray-900 ">
+<div>
+  <div id="tooltip-jese" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+      Jese Leos
+      <div class="tooltip-arrow" data-popper-arrow></div>
+  </div>
+  <img data-tooltip-target="tooltip-jese" class="w-10 h-10 rounded" src="/images/test-avatar.png" alt="Medium avatar">
+</div>
        </div>
       </ul>
   </div>

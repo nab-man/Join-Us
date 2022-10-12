@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const moment = require('moment');
-const { Post, Comment, User } = require("../models/index.js")
+const { Post, Comment, User, Attendence } = require("../models/index.js")
 
 
 
@@ -60,7 +60,17 @@ router.get("/post/:id", async (req, res) => {
     const postData = await Post.findOne({
       where: { post_id: req.params.id },
       include: [{ model: Comment, include: [{ model: User, as: "user" }] }, { model: User, as: "user" }]
-    })
+    });
+   const attendanceData = await Attendence.findAll({
+      where: {
+        post_id: req.params.id
+      },
+      attributes:['post_id','user_id'],
+      include: [
+        { model: User, as: "user", attributes: ['user_name', 'user_id'] }
+      ]
+    });
+
 
     if (!postData) {
       res.render('404error');
@@ -70,9 +80,22 @@ router.get("/post/:id", async (req, res) => {
       if (req.session.loggedIn) {
         loggedIn = true
       }
-      const post = postData.get({ raw: true })
+      const post = postData.get({ raw: true });
+     
+      let attendance = attendanceData.map((attendance) =>
+      attendance.get({ raw: true })
+    );
 
-      res.render('partials/post-info', { post, loggedIn })
+    attendance = attendance.map((attendance) => {
+      
+      return {user_name:attendance.user.dataValues.user_name};
+    }
+
+    )
+      
+      // console.log("this is attendance data simplified ", attendance);
+      console.log("this is attendance data simplified ", attendance);
+      res.render('partials/post-info', { post, loggedIn, attendance })
 
     }
   } catch (err) {

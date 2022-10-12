@@ -41,8 +41,12 @@ router.get("/dashboard", async (req, res) => {
       loggedIn = true;
 
     }
-    let username = await User.findOne({ where: { user_id: req.session.user_id } })
-    username = username.dataValues.user_name
+    let username;
+    if (req.session.user_id) {
+
+      username = await User.findOne({ where: { user_id: req.session.user_id } })
+      username = username.dataValues.user_name
+    }
 
     res.render('dashboard', {
       posts, loggedIn, username
@@ -74,10 +78,13 @@ router.get("/post/:id", async (req, res) => {
         loggedIn = true
       }
       const post = postData.get({ raw: true })
+      let username;
 
-      let username = await User.findOne({ where: { user_id: req.session.user_id } })
-      username = username.dataValues.user_name
+      if (req.session.user_id) {
 
+        username = await User.findOne({ where: { user_id: req.session.user_id } })
+        username = username.dataValues.user_name
+      }
       res.render('partials/post-info', { post, loggedIn, username })
 
     }

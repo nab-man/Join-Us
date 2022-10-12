@@ -13,15 +13,16 @@ router.get('/', (req, res) => {
 
 //find by_post_ID = parameter
 router.get('/:id', (req, res) => {
-  Attendence.findOne({
+  
+  Attendence.findAll({
     where: {
-      user_id: req.params.user_id
+      post_id: req.params.id
     },
+    attributes:['post_id','user_id'],
     include: [
-      {
-        model: User,
-        attributes: ['user_name', 'user_id']
-      }
+
+      { model: User, as: "user", attributes: ['user_name', 'user_id'] }
+     
     ]
   })
   .then(dbUserData => {
@@ -39,6 +40,7 @@ router.get('/:id', (req, res) => {
 
 //POST rout for attendance
 router.post("/", (req, res) => {
+  console.log("post an attendance ",req.session.user_id);
   Attendence.create({
     user_id: req.session.user_id,
     post_id: req.body.post_id

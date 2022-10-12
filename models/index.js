@@ -3,8 +3,24 @@ const Post = require("./Post")
 const Comment = require("./Comment")
 const Attendence = require("./Attendence")
 // User belongs to many post and post belong to many user through attendence
-User.belongsToMany(Post, { through: Attendence })
-Post.belongsToMany(User, { through: Attendence })
+
+Attendence.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'SET NULL'
+  });
+  
+  Attendence.belongsTo(Post, {
+    foreignKey: 'post_id',
+    onDelete: 'SET NULL'
+  });
+  
+  User.hasMany(Attendence, {
+    foreignKey: 'user_id'
+  });
+  
+  Post.hasMany(Attendence, {
+    foreignKey: 'post_id'
+  });
 
 // Comment belongs to user and user has many comments
 Comment.belongsTo(User, {

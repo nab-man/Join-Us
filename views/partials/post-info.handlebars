@@ -125,12 +125,18 @@
         </ul>
       <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
       <div class="p-6 max-w-sm bg-white rounded-lg  shadow-md dark:bg-gray-900 ">
-<div>
-  <div id="tooltip-jese" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-      {{attendence.user_name}} !username should show here
+      <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-200">Attendees</h5>
+      <div class="flex mb-4 -space-x-3">
+        {{#each attendance}}
+
+  <div id="attendee0{{@index}}" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+     {{user_name}}
       <div class="tooltip-arrow" data-popper-arrow></div>
   </div>
-  <img data-tooltip-target="tooltip-jese" class="w-10 h-10 rounded" src="/images/test-avatar.png" alt="Medium avatar">
+
+  <img data-tooltip-target="attendee0{{@index}}" class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="/images/test-avatar.png" alt="Medium avatar">
+
+{{/each}}
 </div>
        </div>
       </ul>

@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
 
 //get all posts for dashboard
 router.get("/dashboard", async (req, res) => {
+
   try {
     const postsData = await Post.findAll({
       logging: console.log,
@@ -40,9 +41,15 @@ router.get("/dashboard", async (req, res) => {
       loggedIn = true;
 
     }
+    let username;
+    if (req.session.user_id) {
+
+      username = await User.findOne({ where: { user_id: req.session.user_id } })
+      username = username.dataValues.user_name
+    }
 
     res.render('dashboard', {
-      posts, loggedIn
+      posts, loggedIn, username
     })
 
 
@@ -80,7 +87,16 @@ router.get("/post/:id", async (req, res) => {
       if (req.session.loggedIn) {
         loggedIn = true
       }
+
       const post = postData.get({ raw: true });
+      
+       let username;
+
+      if (req.session.user_id) {
+
+        username = await User.findOne({ where: { user_id: req.session.user_id } })
+        username = username.dataValues.user_name
+      }
      
       let attendance = attendanceData.map((attendance) =>
       attendance.get({ raw: true })
@@ -95,7 +111,8 @@ router.get("/post/:id", async (req, res) => {
       
       // console.log("this is attendance data simplified ", attendance);
       console.log("this is attendance data simplified ", attendance);
-      res.render('partials/post-info', { post, loggedIn, attendance })
+      res.render('partials/post-info', { post, loggedIn, username, attendance })
+
 
     }
   } catch (err) {
@@ -138,5 +155,8 @@ router.get("/signup", (req, res) => {
   res.render('signup');
 })
 
+router.get('/terms-of-service', (req, res) => {
+  res.render("terms-of-service")
+})
 
 module.exports = router;

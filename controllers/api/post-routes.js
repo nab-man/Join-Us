@@ -10,7 +10,7 @@ router.post("/newpost", async function (req, res) {
         contents: req.body.description,
         date_created: new Date(),
         creator: req.session.user_id,
-        location: "tbd",
+        location: req.body.location,
         meetup_date: new Date(req.body.datepicker)
     })
 

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Attendence, User, Post } = require('../../models');
 
+
 //Route to get attendance
 router.get('/', (req, res) => {
   Attendence.findAll()
@@ -19,6 +20,7 @@ router.get('/:id', (req, res) => {
       post_id: req.params.id
     },
     attributes:['post_id','user_id'],
+  
     include: [
 
       { model: User, as: "user", attributes: ['user_name', 'user_id'] }
@@ -38,9 +40,9 @@ router.get('/:id', (req, res) => {
   });
 });
 
-//POST rout for attendance
+//POST route for attendance
 router.post("/", (req, res) => {
-  console.log("post an attendance ",req.session.user_id);
+  
   Attendence.create({
     user_id: req.session.user_id,
     post_id: req.body.post_id

@@ -35,25 +35,25 @@ function submitCommentForm(event) {
 }
 
 function commentSetting(event) {
-
+    let url = getUrl()
     var optionSelected = event.target;
-    
+
     if (optionSelected.matches(".comment-rm-btn-1248")) {
 
-      let data = {
-        creator_id: optionSelected.dataset.creatorid,        
-      };
-      let comment_id = optionSelected.dataset.commentid;
-       fetch(`http://localhost:3000/api/comments/${comment_id}`, {
-        credentials: "include",
-        method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json',
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(data)
+        let data = {
+            creator_id: optionSelected.dataset.creatorid,
+        };
+        let comment_id = optionSelected.dataset.commentid;
+        fetch(url + `/api/comments/${comment_id}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
 
-    }).then(() => { location.reload() })
+        }).then(() => { location.reload() })
     };
 
 }

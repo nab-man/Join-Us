@@ -12,6 +12,7 @@ Attendence.init({
     },
     user_id: {
         type: DataTypes.INTEGER,
+        unique: 'actions_unique',
         references: {
           model: 'user',
           key: 'user_id'
@@ -19,6 +20,7 @@ Attendence.init({
       },
       post_id: {
         type: DataTypes.INTEGER,
+        unique: 'actions_unique',
         references: {
           model: 'post',
           key: 'post_id'
@@ -26,6 +28,11 @@ Attendence.init({
       }
 }, {
     sequelize,
+    uniqueKeys: {
+      actions_unique: {
+          fields: ['user_id', 'post_id']
+      }
+  },
     timestamps: false,
     freezeTableName: true,
     underscored: true,

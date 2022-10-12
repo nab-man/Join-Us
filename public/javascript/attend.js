@@ -5,8 +5,8 @@ async function attendClickHandler(event) {
       window.location.toString().split('/').length - 1
     ];
     
-    const response = await fetch('/api/posts/attend', {
-      method: 'PUT',
+    const response = await fetch(`/api/attendance/`, {
+      method: 'POST',
       body: JSON.stringify({
         post_id: id
       }),
@@ -18,7 +18,7 @@ async function attendClickHandler(event) {
     if (response.ok) {
       document.location.reload();
     } else {
-    //   console.log(response);
+       console.log(response);
     }
   }
   

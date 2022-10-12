@@ -1,9 +1,11 @@
 var signoutEl = document.getElementById("signout")
 signoutEl.addEventListener("click", signout);
+import getUrl from "./config.js"
 
 function signout() {
+    var url = getUrl()
     console.log("i was clicked")
-    fetch("http://localhost:3000/api/users/logout", {
+    fetch(url + "/api/users/logout", {
         credentials: "include",
         method: "POST"
     }).then(() => {

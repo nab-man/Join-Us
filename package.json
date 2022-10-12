@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "seeds": "node seeds/index.js",
-    "start": "nodemon --delay 3 server.js"
+    "start": "node server.js",
+    "dev":"nodemon --delay 3 server.js"
   },
   "author": "",
   "license": "ISC",

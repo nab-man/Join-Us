@@ -11,4 +11,17 @@ router.get('/', (req, res) => {
     });
 });
 
+//POST rout for attendance
+router.post("/", (req, res) => {
+  Attendence.create({
+    user_id: req.session.user_id,
+    post_id: req.body.post_id
+  })
+    .then(dbAttendanceData => res.json(dbAttendanceData))
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+
 module.exports = router;

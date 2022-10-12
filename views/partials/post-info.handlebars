@@ -51,6 +51,14 @@
 
  
 {{#each post.comments}}
+
+                       <p> 
+    this is comment creator: 
+{{dataValues.creator_id}}
+this is comment id
+{{dataValues.comment_id}}
+</p>
+
 <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
         <footer class="flex justify-between items-center mb-2">
             <div class="flex items-center">
@@ -78,16 +86,22 @@
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
                     aria-labelledby="dropdownMenuIconHorizontalButton">
                     <li>
-                        <a href="#"
-                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                        <div id=""
+                            class="cursor-pointer block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</div>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
+                        <p> 
+    this is comment creator: 
+{{dataValues.creator_id}}
+this is comment id
+{{dataValues.comment_id}}
+</p>
+                        <div id="comment-rm-btn" data-commentid = {{dataValues.comment_id}} data-creatorid = {{dataValues.creator_id}}
+                            class="cursor-pointer block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</div>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                        <div id=""
+                            class="cursor-pointer block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</div>
                     </li>
                 </ul>
             </div>

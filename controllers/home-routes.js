@@ -71,7 +71,7 @@ router.get("/post/:id", async (req, res) => {
         loggedIn = true
       }
       const post = postData.get({ raw: true })
-      
+
       res.render('partials/post-info', { post, loggedIn })
 
     }
@@ -97,10 +97,14 @@ router.get("/login", async (req, res) => {
   const posts = postsData.map((post) =>
     post.get({ raw: true })
   );
+  let loggedIn;
+  if (req.session.loggedIn) {
+    loggedIn = true
+  }
 
   if (req.session.loggedIn) {
     console.log("logged in")
-    res.render('dashboard', { posts });
+    res.render('dashboard', { posts, loggedIn });
     return;
   }
 

@@ -17,6 +17,10 @@ function submitCommentForm(event) {
         id = id.split("?")
         id = id[0]
     }
+    if (id.includes("#")) {
+        id = id.split("#")
+        id = id[0]
+    }
 
 
     var data = {

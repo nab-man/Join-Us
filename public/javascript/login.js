@@ -3,6 +3,7 @@ login.addEventListener('submit', submitLogin);
 
 function submitLogin(event) {
     event.preventDefault()
+    var url = getUrl()
     console.log("hello event form")
     var email = document.getElementById("email").value
     var password = document.getElementById("password").value
@@ -10,7 +11,7 @@ function submitLogin(event) {
         user_name: email,
         password: password
     }
-    fetch("http://localhost:3000/api/users/login", {
+    fetch(url + "/api/users/login", {
         credentials: "include",
         method: "POST",
         headers: {

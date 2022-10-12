@@ -1,3 +1,4 @@
+import getUrl from "./config.js"
 var login = document.getElementById('loginform');
 login.addEventListener('submit', submitLogin);
 

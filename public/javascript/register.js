@@ -22,5 +22,5 @@ function submitRegister(event) {
             "Accept": "application/json"
         },
         body: JSON.stringify(data)
-    })
+    }).then(() => { window.location.href = "/dashboard" })
 }

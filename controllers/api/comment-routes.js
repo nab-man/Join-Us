@@ -36,10 +36,11 @@ router.delete('/:id', isAuthorized, (req, res) => {
 
 console.log("creator ",req.body.creator_id," user ",req.session.user_id);
 
-  if (req.body.creator_id === req.session.user_id) {
+  if (req.body.creator_id == req.session.user_id) {
+    console.log("Deleting comment");
   Comment.destroy({
     where: {
-      id: req.params.comment_id
+      comment_id: req.params.id
     }
   })
     .then(dbCommentData => {

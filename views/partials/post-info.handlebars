@@ -19,7 +19,7 @@
 
 
 <main class="pt-8 pb-4 lg:pt-16 lg:pb-8 bg-gray-200 dark:bg-gray-600 flex justify-around flex-wrap">
-    <div>
+    <div class="min-w_1248">
   <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
       <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
           <header class="mb-4 lg:mb-6 not-format">
@@ -56,7 +56,7 @@
             <div class="flex items-center">
                 <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img
                         class="mr-2 w-6 h-6 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                        src="/images/test-avatar.png"
                         alt="{{dataValues.user.dataValues.user_name}}">{{dataValues.user.dataValues.user_name}}</p>
                 <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
                         title="February 8th, 2022">Feb. 8, 2022</time></p>
@@ -138,7 +138,7 @@
       <div class="p-6 max-w-sm bg-white rounded-lg  shadow-md dark:bg-gray-900 ">
 <div>
   <div id="tooltip-jese" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-      Jese Leos
+      {{attendence.user_name}} !username should show here
       <div class="tooltip-arrow" data-popper-arrow></div>
   </div>
   <img data-tooltip-target="tooltip-jese" class="w-10 h-10 rounded" src="/images/test-avatar.png" alt="Medium avatar">

@@ -32,7 +32,8 @@ Post.init({
     },
     location: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        defaultValue: "To be decided"
     },
     meetup_date: {
         type: DataTypes.DATEONLY,

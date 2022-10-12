@@ -2,7 +2,9 @@
   min-height: 100vh;
 }
 
-
+.min-w_1248{
+    min-width: 50vw;
+}
 
 
 .px-5 {

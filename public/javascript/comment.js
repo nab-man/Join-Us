@@ -1,4 +1,4 @@
-
+import getUrl from "./config.js"
 var comment = document.getElementById('commentform');
 comment.addEventListener('submit', submitCommentForm);
 
@@ -8,6 +8,7 @@ comment_rm_btn.addEventListener('click', removeCommentbyid);
 function submitCommentForm(event) {
 
     event.preventDefault()
+    var url = getUrl()
     console.log("hello event form")
     var comment = document.getElementById("comment").value
     var id = window.location.href.split("/")
@@ -22,7 +23,7 @@ function submitCommentForm(event) {
         content: comment,
         post_id: id
     }
-    fetch("http://localhost:3000/api/comments", {
+    fetch(url + "/api/comments", {
         credentials: "include",
         method: "POST",
         headers: {
@@ -52,5 +53,5 @@ function removeCommentbyid(event) {
             "Accept": "application/json"
         },
         body: JSON.stringify(data)
-    }).then(() => {  })
+    }).then(() => { })
 }

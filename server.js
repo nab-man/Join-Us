@@ -8,6 +8,8 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const path = require('path');
 const cors = require('cors')
+var sslRedirect = require('heroku-ssl-redirect').default
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -25,6 +27,8 @@ const corsOptions = {
   origin: "http://localhost:3000/",
   credentials: true
 }
+
+app.use(sslRedirect());
 
 app.use(cors(corsOptions))
 app.use(session(sess));

@@ -8,7 +8,7 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const path = require('path');
 const cors = require('cors')
-var sslRedirect = require("heroku-ssl-redirect");
+var sslRedirect = require('heroku-ssl-redirect').default
 
 
 const PORT = process.env.PORT || 3000;

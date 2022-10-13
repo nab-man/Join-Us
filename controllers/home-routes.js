@@ -10,8 +10,8 @@ router.get("/", (req, res) => {
 
 })
 
-router.get("/settings", (req, res) => {
-  res.render('skeleton')
+router.get("/attributions", (req, res) => {
+  res.render('attributions');
 
 })
 

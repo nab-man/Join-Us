@@ -6,7 +6,7 @@
           <header class="mb-4 lg:mb-6 not-format">
               <address class="flex items-center mb-6 not-italic">
                   <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                      <img class="mr-4 w-16 h-16 rounded-full" src="/images/test-avatar.png" alt="User avatar">
+                      <img class="mr-4 w-16 h-16 rounded-full" src="https://avatars.dicebear.com/api/avataaars/{{post.user.dataValues.user_name}}.svg" alt="User avatar">
                       <div>
                           <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-gray-200">{{post.user.dataValues.user_name}}</a>
                           <p class="text-base font-light text-gray-500 dark:text-gray-400"></p>
@@ -41,7 +41,7 @@
             <div class="flex items-center">
                 <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img
                         class="mr-2 w-6 h-6 rounded-full"
-                        src="/images/test-avatar.png"
+                        src="https://avatars.dicebear.com/api/avataaars/{{dataValues.user.dataValues.user_name}}.svg"
                         alt="{{dataValues.user.dataValues.user_name}}">{{dataValues.user.dataValues.user_name}}</p>
                 <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
                         title="February 8th, 2022">Feb. 8, 2022</time></p>
@@ -134,7 +134,7 @@
       <div class="tooltip-arrow" data-popper-arrow></div>
   </div>
 
-  <img data-tooltip-target="attendee0{{@index}}" class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="/images/test-avatar.png" alt="Medium avatar">
+  <img data-tooltip-target="attendee0{{@index}}" class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800" src="https://avatars.dicebear.com/api/avataaars/{{user_name}}.svg" alt="Medium avatar">
 
 {{/each}}
 </div>

@@ -10,6 +10,11 @@ router.get("/", (req, res) => {
 
 })
 
+router.get("/settings", (req, res) => {
+  res.render('skeleton')
+
+})
+
 //get all posts for dashboard
 router.get("/dashboard", async (req, res) => {
 

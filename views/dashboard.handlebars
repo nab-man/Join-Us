@@ -1,7 +1,7 @@
 
 <div class="relative">
 
-{{#if true}}  {{! change this to logged in from true after testing }}
+{{#if loggedIn}}  {{! change this to logged in from true after testing }}
 {{> event-form}}
 {{/if}}
 
@@ -32,7 +32,7 @@
               <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{contents}}</p>
               <div class="flex justify-between items-center">
                   <div class="flex items-center space-x-4">
-                      <img class="w-7 h-7 rounded-full" src="/images/test-avatar.png" alt="Bonnie Green avatar" />
+                      <img class="w-7 h-7 rounded-full" src="https://avatars.dicebear.com/api/avataaars/{{user.dataValues.user_name}}.svg" alt="Bonnie Green avatar" />
                       <span class="font-medium dark:text-white">
                           {{user.dataValues.user_name}}
                       </span>

@@ -27,7 +27,6 @@ const corsOptions = {
   origin: "http://localhost:3000/",
   credentials: true
 }
-app.use(sslRedirect());
 
 
 app.use(cors(corsOptions))
@@ -42,6 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
+app.use(sslRedirect());
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening at port ", PORT));

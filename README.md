@@ -19,6 +19,7 @@ The website offers the user the choice to meet friends, network for professional
 
 ### Motivation
 Motivation for development? The motivation for the project comes from the need to improve the social aspect of our lives to better function as humans. Being able to participate in activities either to assist/ be assisted. So that the user can avoid feeling burnout by maintaining a better life satisfaction.
+###### [Back to Index](#Table-of-Contents)
 
 ## User Story
 ```
